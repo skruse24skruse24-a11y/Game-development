@@ -1,0 +1,38 @@
+{
+  "timer": {
+    "name": "Chronometer",
+    "description": "Extend simulation time each run.",
+    "max_level": 10,
+    "base_cost": 30,
+    "cost_growth": 1.14,
+    "effect_per_level": 5.0,
+    "base_value": 15.0
+  },
+  "budget": {
+    "name": "Particle Budget",
+    "description": "Place more particles per run.",
+    "max_level": 10,
+    "base_cost": 40,
+    "cost_growth": 1.15,
+    "effect_per_level": 50,
+    "base_value": 80
+  },
+  "brush": {
+    "name": "Brush Size",
+    "description": "Paint a wider area per stroke.",
+    "max_level": 4,
+    "base_cost": 60,
+    "cost_growth": 1.25,
+    "effect_per_level": 1,
+    "base_value": 1
+  },
+  "insight_rate": {
+    "name": "Observation Array",
+    "description": "Earn more Insight per second during runs.",
+    "max_level": 5,
+    "base_cost": 100,
+    "cost_growth": 1.2,
+    "effect_per_level": 0.05,
+    "base_value": 0.2
+  }
+}

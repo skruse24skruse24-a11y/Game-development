@@ -1,0 +1,95 @@
+{
+  "SAND": [
+    {
+      "id": "sand_fine",
+      "name": "Fine Grains",
+      "description": "Sand placements cost 10% less budget per level.",
+      "max_level": 5,
+      "base_cost": 25,
+      "cost_growth": 1.3,
+      "effect_per_level": 0.1
+    },
+    {
+      "id": "sand_dense",
+      "name": "Heavy Pile",
+      "description": "Sand falls faster (density +1 per level).",
+      "max_level": 3,
+      "base_cost": 40,
+      "cost_growth": 1.4,
+      "effect_per_level": 1
+    }
+  ],
+  "WATR": [
+    {
+      "id": "watr_spread",
+      "name": "Surfactant",
+      "description": "Water spreads more readily.",
+      "max_level": 5,
+      "base_cost": 30,
+      "cost_growth": 1.35,
+      "effect_per_level": 0.08
+    },
+    {
+      "id": "watr_react",
+      "name": "Reactive Water",
+      "description": "+5% reaction chance involving water.",
+      "max_level": 5,
+      "base_cost": 50,
+      "cost_growth": 1.4,
+      "effect_per_level": 0.05
+    }
+  ],
+  "FIRE": [
+    {
+      "id": "fire_spread",
+      "name": "Intensity",
+      "description": "Fire spreads more aggressively.",
+      "max_level": 5,
+      "base_cost": 35,
+      "cost_growth": 1.35,
+      "effect_per_level": 0.05
+    },
+    {
+      "id": "fire_life",
+      "name": "Duration",
+      "description": "Fire burns longer before dying.",
+      "max_level": 5,
+      "base_cost": 35,
+      "cost_growth": 1.35,
+      "effect_per_level": 4
+    }
+  ],
+  "MUD": [
+    {
+      "id": "mud_fertile",
+      "name": "Fertility",
+      "description": "Mud reactions grant +10% mastery XP.",
+      "max_level": 3,
+      "base_cost": 60,
+      "cost_growth": 1.5,
+      "effect_per_level": 0.1
+    }
+  ],
+  "OIL": [
+    {
+      "id": "oil_volatile",
+      "name": "Volatility",
+      "description": "Oil ignites more easily.",
+      "max_level": 3,
+      "base_cost": 45,
+      "cost_growth": 1.4,
+      "effect_per_level": 0.1
+    }
+  ],
+  "ACID": [
+    {
+      "id": "acid_strong",
+      "name": "Corrosion",
+      "description": "Acid dissolves matter faster.",
+      "max_level": 5,
+      "base_cost": 55,
+      "cost_growth": 1.4,
+      "effect_per_level": 0.03
+    }
+  ]
+}

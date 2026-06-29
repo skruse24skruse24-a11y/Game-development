@@ -6,11 +6,21 @@ config_version=5
 
 [application]
 
-config/name="2D Game Template"
-config/version="0.1.0"
+config/name="Cosmic Crucible"
+config/version="0.2.0"
 run/main_scene="res://scenes/Main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+EventBus="*res://autoload/event_bus.gd"
+ElementDB="*res://autoload/element_db.gd"
+ReactionDB="*res://autoload/reaction_db.gd"
+MasteryManager="*res://autoload/mastery_manager.gd"
+Encyclopedia="*res://autoload/encyclopedia.gd"
+GameState="*res://autoload/game_state.gd"
+SaveManager="*res://autoload/save_manager.gd"
 
 [display]
 

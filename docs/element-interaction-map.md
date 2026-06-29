@@ -688,4 +688,56 @@ On `reaction_discovered(reaction_id)`:
 
 ---
 
+## 8. Element Encyclopedia & Mastery System
+
+### Dual progression (separate currencies)
+
+| System | Currency | Purchases | Earned from |
+|--------|----------|-----------|-------------|
+| **Seismic Web** | Insight | New elements, timer, budget, brush, acts | Run events, milestones, reactions (one-time) |
+| **Mastery Track** | Element XP (per element) | Per-element upgrades (spread, potency, efficiency) | Continued use of that element in runs |
+
+The two systems must **never share a shop UI tab** — players should always know which currency they are spending.
+
+### Encyclopedia visibility states
+
+| State | Display | Condition |
+|-------|---------|-----------|
+| `DISCOVERED` | Full entry: name, color, stats, known reactions | Element placed or witnessed in sim |
+| `UNLOCKED` | Full entry + mastery upgrades | Purchased via Insight (seismic shop) |
+| `HINTED` | Silhouette + "?" + act teaser | Same act, not yet unlocked; player completed prior element |
+| `LOCKED` | Grey card + "???" + act number only | Future act; shows milestone name as teaser |
+| `REACTION_KNOWN` | Reaction row lit in journal | Pair triggered at least once |
+| `REACTION_UNKNOWN` | `"? + ? → ?"` greyed | One or both elements discovered but reaction not seen |
+| `REACTION_HIDDEN` | `"??? + ??? → ???"` | Elements not yet discovered |
+
+### Encyclopedia UI sections
+
+1. **Elements** — grid by act; filter discovered / all / unknown
+2. **Reactions** — journal sorted by discovery date; link to element pages
+3. **Milestones** — 7-act ladder with progress bars
+4. **Mastery** — per-element upgrade tree (only for unlocked elements)
+
+### Mastery XP formula
+
+```
+xp_gain_place = pixels_placed × (1 + mastery_level × 0.1)
+xp_gain_react = 5 × (1 + mastery_level × 0.05)  # per element involved
+xp_to_next_level = floor(50 × 1.18^level)
+```
+
+### Example element upgrades (Mastery currency)
+
+| Element | Upgrade | Max | Effect |
+|---------|---------|-----|--------|
+| SAND | Fine Grains | 5 | +10% placement budget efficiency when placing sand |
+| SAND | Heavy Pile | 3 | +1 density (sinks faster) |
+| WATR | Surfactant | 5 | +8% spread rate per level |
+| WATR | Electrolysis | 1 | Unlocks H₂/O₂ when seismic Electrolysis owned |
+| FIRE | Intensity | 5 | +5% spread chance |
+| FIRE | Duration | 5 | +4 ticks burn time |
+| MUD | Fertility | 3 | Preview Act II SOUP catalyst bonus |
+
+---
+
 *Implementation map for the powder physics incremental game. Last updated: June 2026.*
