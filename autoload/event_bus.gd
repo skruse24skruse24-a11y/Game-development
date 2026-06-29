@@ -13,3 +13,6 @@ signal mastery_changed(element_key: String, level: int, xp: int)
 signal mastery_upgrade_purchased(element_key: String, upgrade_id: String, level: int)
 signal toast(message: String)
 signal encyclopedia_updated
+signal phase_change(from_key: String, to_key: String)
+signal act_progress_changed(progress: float)
+signal act_milestone_complete(act: int, milestone_name: String)

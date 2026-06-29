@@ -140,6 +140,8 @@ func _products(reaction: Dictionary) -> String:
 
 
 func get_milestone_progress(act: int) -> float:
+	if act == 1:
+		return MilestoneTracker.get_act1_progress()
 	var keys: Array[String] = ElementDB.get_keys_for_act(act)
 	if keys.is_empty():
 		return 0.0

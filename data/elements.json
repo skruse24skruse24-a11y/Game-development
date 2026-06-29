@@ -177,6 +177,7 @@
     "act": 1,
     "unlock_order": 14,
     "insight_unlock_cost": 150,
+    "auto_unlock": "reaction",
     "class": "POWDER",
     "density": 6,
     "color": "#b87333",

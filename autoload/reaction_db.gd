@@ -50,6 +50,13 @@ func find_reaction(key_a: String, key_b: String) -> Dictionary:
 	return {}
 
 
+func find_by_id(reaction_id: String) -> Dictionary:
+	for reaction in _reactions:
+		if reaction.id == reaction_id:
+			return reaction
+	return {}
+
+
 func get_reactions_for_element(key: String) -> Array[Dictionary]:
 	var result: Array[Dictionary] = []
 	for reaction in _reactions:

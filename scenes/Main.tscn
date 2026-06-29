@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cosmiccrucible"]
+[gd_scene load_steps=13 format=3 uid="uid://cosmiccrucible"]
 
 [ext_resource type="Script" path="res://scripts/ui/main_controller.gd" id="1_main"]
 [ext_resource type="Script" path="res://scripts/simulation/powder_simulation.gd" id="2_sim"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://scripts/ui/seismic_shop_panel.gd" id="6_seismic"]
 [ext_resource type="Script" path="res://scripts/ui/mastery_panel.gd" id="7_mastery"]
 [ext_resource type="Script" path="res://scripts/ui/encyclopedia_panel.gd" id="8_enc"]
+[ext_resource type="Script" path="res://scripts/ui/run_summary_panel.gd" id="9_summary"]
+[ext_resource type="Script" path="res://scripts/ui/tutorial_panel.gd" id="10_tutorial"]
+[ext_resource type="Theme" path="res://resources/ui_theme.tres" id="11_theme"]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -16,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("11_theme")
 script = ExtResource("1_main")
 
 [node name="RootLayout" type="HBoxContainer" parent="."]
@@ -23,45 +27,66 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -8.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 8
+theme_override_constants/separation = 10
 
 [node name="SimColumn" type="VBoxContainer" parent="RootLayout"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
+theme_override_constants/separation = 8
 
 [node name="HUD" type="PanelContainer" parent="RootLayout/SimColumn"]
 unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("4_hud")
 
-[node name="HBox" type="HBoxContainer" parent="RootLayout/SimColumn/HUD"]
+[node name="VBox" type="VBoxContainer" parent="RootLayout/SimColumn/HUD"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="HBox" type="HBoxContainer" parent="RootLayout/SimColumn/HUD/VBox"]
 layout_mode = 2
 
-[node name="InsightLabel" type="Label" parent="RootLayout/SimColumn/HUD/HBox"]
+[node name="InsightLabel" type="Label" parent="RootLayout/SimColumn/HUD/VBox/HBox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Insight: 0"
 
-[node name="TimerLabel" type="Label" parent="RootLayout/SimColumn/HUD/HBox"]
+[node name="TimerLabel" type="Label" parent="RootLayout/SimColumn/HUD/VBox/HBox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Time: 0s"
 
-[node name="BudgetLabel" type="Label" parent="RootLayout/SimColumn/HUD/HBox"]
+[node name="BudgetLabel" type="Label" parent="RootLayout/SimColumn/HUD/VBox/HBox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Budget: 0"
 
-[node name="RunButton" type="Button" parent="RootLayout/SimColumn/HUD/HBox"]
+[node name="RunButton" type="Button" parent="RootLayout/SimColumn/HUD/VBox/HBox"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Start Run"
+text = "Start Run (R)"
+
+[node name="ActLabel" type="Label" parent="RootLayout/SimColumn/HUD/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Act I: 0/15 reactions"
+
+[node name="ActProgress" type="ProgressBar" parent="RootLayout/SimColumn/HUD/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 18)
+layout_mode = 2
+max_value = 1.0
+show_percentage = false
 
 [node name="SimFrame" type="PanelContainer" parent="RootLayout/SimColumn"]
 layout_mode = 2
@@ -87,6 +112,7 @@ script = ExtResource("2_sim")
 layout_mode = 2
 custom_minimum_size = Vector2(280, 0)
 size_flags_horizontal = 3
+theme_override_constants/separation = 8
 
 [node name="Palette" type="PanelContainer" parent="RootLayout/SideColumn"]
 layout_mode = 2
@@ -98,17 +124,20 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="RootLayout/SideColumn/Palette/VBox"]
 layout_mode = 2
-text = "Elements (unlocked)"
+text = "Elements"
 
 [node name="Flow" type="HFlowContainer" parent="RootLayout/SideColumn/Palette/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
 
 [node name="Help" type="Label" parent="RootLayout/SideColumn"]
 layout_mode = 2
 autowrap_mode = 3
-text = "R: Start run  |  E: Encyclopedia  |  U: Seismic shop (Insight)  |  M: Mastery (Element XP)  |  LMB: Paint  |  RMB: Wall"
+text = "R — start run  ·  LMB paint  ·  RMB wall
+E — encyclopedia  ·  U — seismic shop  ·  M — mastery"
 
 [node name="SeismicShop" type="PanelContainer" parent="."]
 unique_name_in_owner = true
@@ -232,15 +261,103 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
+[node name="RunSummary" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -220.0
+offset_top = -180.0
+offset_right = 220.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_summary")
+
+[node name="Margin" type="MarginContainer" parent="RunSummary"]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="RunSummary/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="TitleLabel" type="Label" parent="RunSummary/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Run Complete"
+horizontal_alignment = 1
+
+[node name="BodyLabel" type="Label" parent="RunSummary/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+autowrap_mode = 3
+text = "Summary"
+
+[node name="DismissButton" type="Button" parent="RunSummary/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Continue"
+
+[node name="Tutorial" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -200.0
+offset_right = 260.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_tutorial")
+
+[node name="Margin" type="MarginContainer" parent="Tutorial"]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Tutorial/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Title" type="Label" parent="Tutorial/Margin/VBox"]
+layout_mode = 2
+text = "Welcome to Cosmic Crucible"
+horizontal_alignment = 1
+
+[node name="Body" type="Label" parent="Tutorial/Margin/VBox"]
+layout_mode = 2
+autowrap_mode = 3
+text = "Act I: Create Reactions
+
+You have a timed petri dish. Paint elements, discover reactions, and earn Insight for seismic upgrades.
+
+• Press R to start a run
+• Left-click to paint the selected element
+• Right-click to place walls
+• Mix sand and water to make mud — your first reaction
+• Boil water into steam, then condense it back to complete the steam cycle milestone
+
+Open the encyclopedia (E) to track discoveries. Good luck, alchemist!"
+
+[node name="TutorialDismiss" type="Button" parent="Tutorial/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Begin Experiment"
+
 [node name="ToastLabel" type="Label" parent="."]
 unique_name_in_owner = true
 visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -200.0
-offset_top = 12.0
-offset_right = 200.0
-offset_bottom = 40.0
+offset_left = -240.0
+offset_top = 16.0
+offset_right = 240.0
+offset_bottom = 44.0
 grow_horizontal = 2
 horizontal_alignment = 1

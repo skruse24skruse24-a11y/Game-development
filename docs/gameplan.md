@@ -60,12 +60,15 @@ Godot 4 implementation plan for the powder physics incremental game.
 - [x] Encyclopedia with ? / ??? states
 - [x] Save/load JSON
 
-### Phase 1 — Act I complete
+### Phase 1 — Act I complete ✅
 
-- [ ] Remaining Act I elements (ICE, SMOK, ASH, SALT, CLAY, SPARK)
-- [ ] 15-reaction milestone detection
-- [ ] Steam cycle detector
-- [ ] Reaction journal polish
+- [x] Remaining Act I elements (ICE, SMOK, ASH, SALT, CLAY, SPARK)
+- [x] 15-reaction milestone detection
+- [x] Steam cycle detector
+- [x] Reaction journal polish
+- [x] Petri-dish run setup with wall border
+- [x] Run summary panel + first-run tutorial
+- [x] HUD Act I progress bar
 
 ### Phase 2 — Act II protocell
 
@@ -97,7 +100,10 @@ Godot 4 implementation plan for the powder physics incremental game.
 | `autoload/game_state.gd` | Insight, seismic, run state |
 | `autoload/mastery_manager.gd` | Element XP + upgrades |
 | `autoload/encyclopedia.gd` | Discovery + hint logic |
+| `autoload/milestone_tracker.gd` | Act milestones + steam cycle |
 | `autoload/save_manager.gd` | Persistence |
+| `scripts/ui/run_summary_panel.gd` | End-of-run summary |
+| `scripts/ui/tutorial_panel.gd` | First-run tutorial |
 | `scripts/simulation/material_id.gd` | ID constants |
 | `scripts/simulation/powder_simulation.gd` | CA engine |
 | `scripts/simulation/sim_renderer.gd` | ImageTexture display |

@@ -119,5 +119,65 @@
     "oneway": true,
     "insight_reward": 10,
     "mastery_xp": 5
+  },
+  {
+    "id": "I_011",
+    "act": 1,
+    "elem1": "WATR",
+    "elem2": "ICE",
+    "result1": "ICE",
+    "result2": null,
+    "chance": 0.08,
+    "oneway": true,
+    "insight_reward": 10,
+    "mastery_xp": 5
+  },
+  {
+    "id": "I_012",
+    "act": 1,
+    "elem1": "SAND",
+    "elem2": "LAVA",
+    "result1": null,
+    "result2": "LAVA",
+    "chance": 0.12,
+    "oneway": true,
+    "insight_reward": 10,
+    "mastery_xp": 5
+  },
+  {
+    "id": "I_013",
+    "act": 1,
+    "elem1": "STONE",
+    "elem2": "LAVA",
+    "result1": "LAVA",
+    "result2": null,
+    "chance": 0.03,
+    "oneway": true,
+    "insight_reward": 12,
+    "mastery_xp": 6
+  },
+  {
+    "id": "I_014",
+    "act": 1,
+    "elem1": "STEAM",
+    "elem2": "ICE",
+    "result1": "WATR",
+    "result2": null,
+    "chance": 0.25,
+    "oneway": true,
+    "insight_reward": 10,
+    "mastery_xp": 5
+  },
+  {
+    "id": "I_015",
+    "act": 1,
+    "elem1": "ACID",
+    "elem2": "MUD",
+    "result1": "SAND",
+    "result2": null,
+    "chance": 0.1,
+    "oneway": true,
+    "insight_reward": 12,
+    "mastery_xp": 6
   }
 ]

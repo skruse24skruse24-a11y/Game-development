@@ -26,8 +26,9 @@ func refresh() -> void:
 		btn.disabled = not GameState.unlocked_elements.get(key, false)
 		btn.tooltip_text = Encyclopedia.get_description(key)
 		btn.pressed.connect(_select.bind(key, btn))
-		if key == GameState.selected_element:
+		if key == GameState.selected_element and GameState.unlocked_elements.get(key, false):
 			btn.button_pressed = true
+			btn.add_theme_color_override("font_color", Color(1.0, 0.95, 0.7))
 		flow.add_child(btn)
 
 
@@ -37,4 +38,9 @@ func _select(key: String, btn: Button) -> void:
 	GameState.selected_element = key
 	for child in flow.get_children():
 		if child is Button:
-			child.button_pressed = child == btn
+			var selected := child == btn
+			child.button_pressed = selected
+			if selected:
+				child.add_theme_color_override("font_color", Color(1.0, 0.95, 0.7))
+			else:
+				child.remove_theme_color_override("font_color")

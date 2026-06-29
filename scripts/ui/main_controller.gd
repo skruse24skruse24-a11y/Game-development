@@ -6,6 +6,8 @@ extends Control
 @onready var seismic_shop: PanelContainer = %SeismicShop
 @onready var mastery_panel: PanelContainer = %MasteryPanel
 @onready var encyclopedia: PanelContainer = %Encyclopedia
+@onready var run_summary: PanelContainer = %RunSummary
+@onready var tutorial: PanelContainer = %Tutorial
 
 var _drawing: bool = false
 var _toast_timer: float = 0.0
@@ -17,6 +19,7 @@ func _ready() -> void:
 	EventBus.toast.connect(_show_toast)
 	EventBus.run_started.connect(_on_run_started)
 	EventBus.run_ended.connect(_on_run_ended)
+	tutorial.maybe_show()
 
 
 func _process(delta: float) -> void:
@@ -31,7 +34,7 @@ func _process(delta: float) -> void:
 
 
 func start_run() -> void:
-	(sim as PowderSimulation).clear_grid()
+	(sim as PowderSimulation).setup_petri_dish()
 	GameState.start_run()
 
 
@@ -39,11 +42,13 @@ func _on_run_started() -> void:
 	pass
 
 
-func _on_run_ended(_summary: Dictionary) -> void:
-	EventBus.toast.emit("Run complete!")
+func _on_run_ended(summary: Dictionary) -> void:
+	run_summary.show_summary(summary)
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if run_summary.visible or tutorial.visible:
+		return
 	if event is InputEventKey and event.pressed:
 		match event.keycode:
 			KEY_E:

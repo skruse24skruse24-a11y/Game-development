@@ -20,6 +20,7 @@ ReactionDB="*res://autoload/reaction_db.gd"
 MasteryManager="*res://autoload/mastery_manager.gd"
 Encyclopedia="*res://autoload/encyclopedia.gd"
 GameState="*res://autoload/game_state.gd"
+MilestoneTracker="*res://autoload/milestone_tracker.gd"
 SaveManager="*res://autoload/save_manager.gd"
 
 [display]
