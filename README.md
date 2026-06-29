@@ -20,6 +20,8 @@ A clean starting point for 2D game development using [Godot 4](https://godotengi
 
 ## Resources
 
+- [Powder physics incremental game design](docs/powder-incremental-game-design.md) — Powder Toy–style sim + incremental progression research
+- [Incremental 2D game loop & upgrade path research](docs/incremental-2d-game-loop-research.md) — design patterns, math, and curated links for idle/clicker games
 - [Godot 4 documentation](https://docs.godotengine.org/en/stable/)
 - [GDScript reference](https://docs.godotengine.org/en/stable/tutorials/scripting/gdscript/index.html)
 - [2D game tutorials](https://docs.godotengine.org/en/stable/tutorials/2d/index.html)
