@@ -2,7 +2,7 @@
 
 A design reference for an incremental game built around a **Powder Toy–style falling-sand physics simulation**. The player starts with one element and a short simulation timer, then unlocks longer runs, more elements, larger placement budgets, and eventually **emergent life** from disparate chemistry.
 
-Companion doc: [Incremental 2D Game Loop Research](incremental-2d-game-loop-research.md)
+Companion doc: [Incremental 2D Game Loop Research](incremental-2d-game-loop-research.md) | [Element Interaction Map](element-interaction-map.md)
 
 ---
 
